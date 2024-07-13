@@ -1,0 +1,119 @@
+<div class="min-h-screen flex flex-col justify-center items-center">
+  <div class="bg-white p-8 rounded-lg shadow-md w-96">
+    <h2 class="text-2xl font-bold mb-6 text-center">Register</h2>
+
+    <!-- Corrected path to partials/message -->
+    <%- include('partials/message') %>
+
+    <form
+      action="/user/register"
+      method="POST"
+      class="space-y-4"
+      onsubmit="return validateForm()"
+    >
+      <div>
+        <label for="name" class="block text-sm font-medium text-gray-700"
+          >Full Name</label
+        >
+        <input
+          type="text"
+          id="name"
+          name="name"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <div>
+        <label for="email" class="block text-sm font-medium text-gray-700"
+          >Email Address</label
+        >
+        <input
+          type="email"
+          id="email"
+          name="email"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <div>
+        <label for="password" class="block text-sm font-medium text-gray-700"
+          >Password</label
+        >
+        <input
+          type="password"
+          id="password"
+          name="password"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <div>
+        <label
+          for="confirm_password"
+          class="block text-sm font-medium text-gray-700"
+          >Confirm Password</label
+        >
+        <input
+          type="password"
+          id="confirm_password"
+          name="confirm_password"
+          required
+          class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+        />
+      </div>
+      <div>
+        <h6 class="text-[10px] font-bold mb-2 text-center text-red-500">
+          *Password Requirements
+        </h6>
+        <ul class="text-left text-[10px] space-y-2">
+          <li><span class="font-medium">At least 8 characters</span></li>
+          <li>
+            <span class="font-semibold">At least 1 special character</span>
+          </li>
+          <li><span class="font-semibold">At least 1 number</span></li>
+        </ul>
+      </div>
+      <button
+        type="submit"
+        class="w-full py-2 px-4 bg-blue-600 text-white font-semibold rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-600"
+      >
+        Register
+      </button>
+    </form>
+    <div class="mt-6 text-center">
+      <a href="/user/login" class="text-sm text-blue-600 hover:underline"
+        >Already have an account? Login</a
+      >
+    </div>
+  </div>
+</div>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // function validateForm() {
+  //   var password = document.getElementById('password').value;
+  //   var confirm_password = document.getElementById('confirm_password').value;
+
+  //   // Password length check
+  //   if (password.length < 8) {
+  //     alert('Password must be at least 8 characters long');
+  //     return false;
+  //   }
+
+  //   // Password contains at least one number and one special character check
+  //   var regex = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{8,}$/;
+  //   if (!regex.test(password)) {
+  //     alert(
+  //       'Password must contain at least one number and one special character'
+  //     );
+  //     return false;
+  //   }
+
+  //   // Matching passwords check
+  //   if (password !== confirm_password) {
+  //     alert('Passwords do not match');
+  //     return false;
+  //   }
+
+  //   return true; // Allow form submission
+  // }
+</script>

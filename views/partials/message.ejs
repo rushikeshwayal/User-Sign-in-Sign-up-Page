@@ -1,0 +1,42 @@
+<% if (errors && errors.length > 0) { %>
+<div id="error-container" role="alert" class="flex flex-wrap w-[400px]">
+  <% errors.forEach((err, index) => { %>
+  <p
+    id="error-message-<%= index %>"
+    class="bg-red-100 border border-red-400 text-[10px] text-red-700 px-4 py-3 mt-1 mb-1 rounded relative"
+  >
+    * <%= err.msg %>
+    <button
+      id="error-<%= index %>"
+      class="ml-[80px] border border-blue-300 px-2 pb-0.5 rounded items-center"
+      onclick="removeError('<%= index %>')"
+    >
+      x
+    </button>
+  </p>
+  <% }); %>
+</div>
+<% } %>
+
+<script>
+  function removeError(index) {
+    const errorElement = document.getElementById(`error-message-${index}`);
+    if (errorElement) {
+      errorElement.classList.add('fade-out');
+      setTimeout(() => {
+        errorElement.style.display = 'none';
+      }, 1000); // Duration should match the CSS transition duration
+    }
+  }
+
+  function autoHideErrors() {
+    const errorMessages = document.querySelectorAll('[id^="error-message-"]');
+    errorMessages.forEach((errorElement, index) => {
+      setTimeout(() => {
+        removeError(index);
+      }, (index + 1) * 5000); // Stagger the timeouts (e.g., 9000 milliseconds = 9 seconds interval)
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', autoHideErrors);
+</script>
